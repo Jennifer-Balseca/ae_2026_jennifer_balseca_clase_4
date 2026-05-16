@@ -1,4 +1,5 @@
-//creación de múltiples objetos: 
+//Operaciones Fundamentales
+//FILTER
 data class Student(
     val id: Long,
     val name: String,
@@ -7,7 +8,7 @@ data class Student(
     val isActive: Boolean
 )
 
-fun getStudents(): List<Student>{
+fun getStudents(): MutableList<Student>{ 
     val jorge = Student(
  		id = 1,
         name = "Jorge",
@@ -29,7 +30,8 @@ fun getStudents(): List<Student>{
         grade = 9, 
         isActive = true
     ) 
-    return listOf(jorge, ana, juan)
+    return mutableListOf(jorge, ana, juan) 
+    //declaración de lista mutable
 }
 
 //firma de la función: 
@@ -39,9 +41,21 @@ fun getResult(grade: Int): String {
     return if(grade>7) "Aprobado" else ""
 }
 
-fun main() { 
-   for(student in getStudents()){
-       println("${student.name} esta ${getResult(student.grade)}")
+fun main() { //Operacion de filtro para filtrar:
+   val estudiantesEstudiosos: MutableList<Student> = mutableListOf()
+   for (student in getStudents()){
+       if(student.grade>7){
+           estudiantesEstudiosos.add(student)
+       }
    }
+   println(estudiantesEstudiosos)
+   
+   //Forma optimizada usando op filter
+   val estudiantesEstudiosos2: List<Student> = getStudents().filter { loQueSea ->
+       loQueSea.grade > 7
+       //lambda: expresión con anonimidad para ejecutar una línea de comando
+       //loQueSea viene a ser el estudiante
+       //Lambda en el caso del filtro, tiene un alias y un executable 
+   }
+	println(estudiantesEstudiosos2)
 }
-
