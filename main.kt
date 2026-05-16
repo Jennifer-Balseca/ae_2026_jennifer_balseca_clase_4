@@ -1,16 +1,19 @@
 fun main() {
-    val name: String = "Ana"
-    val email: String = "ana@gmail.com"
-    val number: Int = 67
-    //Ana -ana@gmail.com
+    val grade: Int = 85
     
-    //y evitar agregacion de string, ocupa mucha ram a la larga:
-    println(name + "-" + email)
-    //siempre usar string templates ${}:
-    println("$name - $email")
+    if (grade > 70) {
+        println("Aprobado")
+    } else {
+        println("Reprobado")
+    }
     
-    //se pueden hacer cálculos steven con string pequeños
-	println("Te faltan ${100 - number} para llegar a 100")
-    
-    
+    //se puede usar if como una expresión de variable
+   	//se puede reducir y mejorar
+    val results: String = if (grade > 70){
+        "Aprobado"
+    } else {
+        "Reprobado"
+    }
+		
+    println(results)
 }
