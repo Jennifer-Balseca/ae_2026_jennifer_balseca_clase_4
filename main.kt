@@ -1,7 +1,4 @@
-
-  //hay muchos tipos de clases, vamos a usar mucho =data class : abstracción que nos sirve para representar múltiples valores a un solo objeto
-  //construcción de la clasefuncion por defecto que permite crear una nueva instancia de la clase
-
+//creación de múltiples objetos: 
 data class Student(
     val id: Long,
     val name: String,
@@ -10,18 +7,41 @@ data class Student(
     val isActive: Boolean
 )
 
-fun main() {
-    //creación de instancias de clases:
+fun getStudents(): List<Student>{
     val jorge = Student(
  		id = 1,
         name = "Jorge",
         email = "jorge@puce.edu.ec",
         grade = 8, 
         isActive = true
-    ) //no importa el orden del contructor, lo importante es que esté todo lo que pide
-    
-    val ana = Student(1, "Ana", "ana@puce.edu.ec", 10, true) //si se usa una instancia simple si hay que respetar el orden del constructor
-    println(ana)
-    println(jorge)
-   
+    ) 
+    val ana = Student(
+ 		id = 2,
+        name = "Ana",
+        email = "ana@puce.edu.ec",
+        grade = 6, 
+        isActive = true
+    ) 
+    val juan= Student(
+ 		id = 3,
+        name = "Juan",
+        email = "juan@puce.edu.ec",
+        grade = 9, 
+        isActive = true
+    ) 
+    return listOf(jorge, ana, juan)
 }
+
+//firma de la función: 
+//En este caso, la firma de getResults recibe un Int y devuelve un string
+
+fun getResult(grade: Int): String {
+    return if(grade>7) "Aprobado" else ""
+}
+
+fun main() { 
+   for(student in getStudents()){
+       println("${student.name} esta ${getResult(student.grade)}")
+   }
+}
+
